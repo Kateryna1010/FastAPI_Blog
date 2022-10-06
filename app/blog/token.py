@@ -3,11 +3,14 @@ from typing import Optional
 
 from jose import jwt, JWTError
 
+import os
+
 from .schemas import TokenData
 
-SECRET_KEY = "259349b639dd5e58f0c2a41bc3ecb0d40bda4c2af3975b9bfc0b344b385112a9"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+ALGORITHM = os.getenv('ALGORITHM')
+ACCESS_TOKEN_EXPIRE_MINUTES = os.getenv('ACCESS_TOKEN_EXPIRE_MINUTES')
 
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
